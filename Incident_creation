@@ -1,0 +1,63 @@
+#!/bin/bash
+
+
+# ToDo
+# - Fix the neofetch bit.
+
+# Check for root permission
+if [ "$EUID" -ne 0 ]
+	then echo "Please run as root."
+	exit
+fi
+
+
+echo "Enter filename"
+	read filename
+	touch $filename
+
+
+# Check for template creation
+read -n1 -p "Do you want to run the template now? y n" template
+# echo "Do you want to run the template now? y n"
+#	read template
+
+#if ["$template"="y"]; then 
+if [[ $template == "Y" || $template == "y" ]]; then
+	printf '\n%s\n' 'Acknowledged, lets get started.'
+
+		echo "Enter Incident title."
+		read title
+	#	echo "/// # $title" >> ./$title_$(date +"%Y%m%d_%H%M")
+		echo "/// # $title" >> ./$filename
+		echo "Date: $(date +"%Y%m%d_%H%M")" >> ./$filename
+
+	echo Enter end-customer company name
+		read company
+		echo "Company Name: $company" >> ./$filename
+		
+	echo Enter customer contact name if applicable
+		read contact
+		echo "Contact Info: $contact" >> ./$filename
+		
+	echo Enter Device name if applicable.
+		read dev_name
+		echo "Device Name: $dev_name" >> ./$filename
+
+	echo Enter brief problem description.
+		read prob_desc
+		echo "Description: $prob_desc" >> ./$filename
+
+	echo "Notes: " >> ./$filename
+	printf '\n%s\n' ' Acknowledged. Thank you for creating this ticket! Please edit $filename with your preferred text editor.' ;
+
+#	read -n1 -p "Are you on the device that is currently having the issue? [y/n]" dev_status
+#		case $dev_status in
+#			y|Y) echo "System Info:" >> ./$filename && neofetch >> ./$filename && echo "Notes: " >> ./$filename && printf '\n%s\n' 'Acnkowledged! Thank you for creating this ticket! Please edit $filename with your preferred text editor.' ;;
+#			n|N) echo "Notes: " >> ./$filename && printf '\n%s\n' ' Acknowledged. Thank you for creating this ticket! Please edit $filename with your preferred text editor.' ;;
+#			*) echo "Please enter y/n." ;;
+#		esac
+
+else
+	echo "Notes: " >> ./$filename
+	printf '\n%s\n' 'Acknowledged, no template created. Please edit $filename with your preferred text editor.'
+fi
