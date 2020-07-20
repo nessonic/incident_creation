@@ -1,9 +1,5 @@
 #!/bin/bash
 
-
-# ToDo
-# - Fix the neofetch bit.
-
 # Check for root permission
 if [ "$EUID" -ne 0 ]
 	then echo "Please run as root."
@@ -18,16 +14,12 @@ echo "Enter filename"
 
 # Check for template creation
 read -n1 -p "Do you want to run the template now? y n" template
-# echo "Do you want to run the template now? y n"
-#	read template
 
-#if ["$template"="y"]; then 
 if [[ $template == "Y" || $template == "y" ]]; then
 	printf '\n%s\n' 'Acknowledged, lets get started.'
 
 		echo "Enter Incident title."
 		read title
-	#	echo "/// # $title" >> ./$title_$(date +"%Y%m%d_%H%M")
 		echo "/// # $title" >> ./$filename
 		echo "Date: $(date +"%Y%m%d_%H%M")" >> ./$filename
 
