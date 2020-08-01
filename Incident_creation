@@ -9,8 +9,9 @@ fi
 
 echo "Enter filename"
 	read filename
-	touch $filename.md
-	sudo chmod +x $filename.md
+	filename=${filename}.md
+	touch $filename
+	chmod +x $filename
 
 
 # Check for template creation
@@ -22,25 +23,27 @@ if [[ $template == "Y" || $template == "y" ]]; then
 		echo "Enter Incident title."
 		read title
 		echo "/// # $title" >> ./$filename
-		echo "Date: $(date +"%Y%m%d_%H%M")" >> ./$filename
+		echo "=====================================================" >> ./$filename
+		echo " * Date: $(date +"%Y%m%d")" >> ./$filename
+		echo " * Time: $(date +"%H%M")" >> ./$filename
 
 	echo Enter end-customer company name
 		read company
-		echo "Company Name: $company" >> ./$filename
+		echo " * Company Name: $company" >> ./$filename
 		
 	echo Enter customer contact name if applicable
 		read contact
-		echo "Contact Info: $contact" >> ./$filename
+		echo " * Contact Info: $contact" >> ./$filename
 		
 	echo Enter Device name if applicable.
 		read dev_name
-		echo "Device Name: $dev_name" >> ./$filename
+		echo " * Device Name: $dev_name" >> ./$filename
 
 	echo Enter brief problem description.
 		read prob_desc
-		echo "Description: $prob_desc" >> ./$filename
+		echo " * Description: $prob_desc" >> ./$filename
 
-	echo "Notes: " >> ./$filename
+	echo " * Notes: " >> ./$filename
 	printf '\n%s\n' ' Acknowledged. Thank you for creating this ticket! Please edit file with your preferred text editor.' && echo 'Filename:' $filename;
 
 #	read -n1 -p "Are you on the device that is currently having the issue? [y/n]" dev_status
