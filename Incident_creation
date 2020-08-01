@@ -40,16 +40,17 @@ if [[ $template == "Y" || $template == "y" ]]; then
 		echo "Description: $prob_desc" >> ./$filename
 
 	echo "Notes: " >> ./$filename
-	printf '\n%s\n' ' Acknowledged. Thank you for creating this ticket! Please edit $filename with your preferred text editor.' ;
+	printf '\n%s\n' ' Acknowledged. Thank you for creating this ticket! Please edit file with your preferred text editor.' && echo 'Filename:' $filename;
 
 #	read -n1 -p "Are you on the device that is currently having the issue? [y/n]" dev_status
 #		case $dev_status in
-#			y|Y) echo "System Info:" >> ./$filename && neofetch >> ./$filename && echo "Notes: " >> ./$filename && printf '\n%s\n' 'Acnkowledged! Thank you for creating this ticket! Please edit $filename with your preferred text editor.' ;;
-#			n|N) echo "Notes: " >> ./$filename && printf '\n%s\n' ' Acknowledged. Thank you for creating this ticket! Please edit $filename with your preferred text editor.' ;;
+#			y|Y) echo "System Info:" >> ./$filename && neofetch >> ./$filename && echo "Notes: " >> ./$filename && printf '\n%s\n' 'Acnkowledged! Thank you for creating this ticket! Please edit your file with your preferred text editor.' && echo 'Filename:' $filename;;
+#			n|N) echo "Notes: " >> ./$filename && printf '\n%s\n' ' Acknowledged. Thank you for creating this ticket! Please edit your file with your preferred text editor.' && echo 'Filename:' $filename;;
 #			*) echo "Please enter y/n." ;;
 #		esac
 
 else
 	echo "Notes: " >> ./$filename
-	printf '\n%s\n' 'Acknowledged, no template created. Please edit $filename with your preferred text editor.'
+	printf '\n%s\n' 'Acknowledged, no template created. Please edit your file with your preferred text editor.' && echo 'Filename:' $filename
+
 fi
