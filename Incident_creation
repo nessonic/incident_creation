@@ -9,7 +9,8 @@ fi
 
 echo "Enter filename"
 	read filename
-	touch $filename
+	touch $filename.md
+	sudo chmod +x $filename.md
 
 
 # Check for template creation
