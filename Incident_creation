@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 
-echo "Enter filename"
+echo "Enter filename, for file organization please prepend filename with numeric date e.g. 20200204 for February 4th, 2020."
 	read filename
 	filename=${filename}.md
 	touch $filename
