@@ -22,7 +22,8 @@ if [[ $template == "Y" || $template == "y" ]]; then
 
 		echo "Enter Incident title."
 		read title
-		echo "/// # $title" >> ./$filename
+		echo "=====================================================" >> ./$filename
+		echo "# $title" >> ./$filename
 		echo "=====================================================" >> ./$filename
 		echo " * Date: $(date +"%Y%m%d")" >> ./$filename
 		echo " * Time: $(date +"%H%M")" >> ./$filename
